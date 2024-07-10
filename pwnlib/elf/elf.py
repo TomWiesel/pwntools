@@ -222,6 +222,8 @@ class ELF(ELFFile):
         #: :class:`mmap.mmap`: Memory-mapped copy of the ELF file on disk
         self.mmap = mmap.mmap(self.file.fileno(), 0, access=mmap.ACCESS_COPY)
 
+        self.file.close()
+
         super(ELF,self).__init__(self.mmap)
 
         #: :class:`str`: Path to the file
